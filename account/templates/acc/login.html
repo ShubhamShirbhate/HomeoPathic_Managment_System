@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="hdr">
+        <h2>Login</h2>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="log">
+            <lable>Username &nbsp&nbsp</lable>
+            <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+            <br><br>
+            <lable>Password &nbsp&nbsp</lable> 
+            <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+            <br>
+            <br>
+            <div class="log-btn">
+                <button type="submit">Login</button>
+            </div>
+            <div class="error">
+                <h4>{{ error }}</h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

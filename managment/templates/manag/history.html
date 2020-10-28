@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div>        
+        <h3>
+            history
+        </h3>
+    </div>
+    <div>
+        <a href="{% url 'patient_view' %}">Treatment</a>
+    </div>
+</div>
+
+<div class="container">
+    {% for i in data %}
+        {{ i.add_history }}<br>
+    {% endfor %}
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="add_history" placeholder="Eneter History" cols="135" rows="10" id="id_add_history" autocapitalize="none" autocomplete="add_history" autofocus="" required="" ></textarea>
+        <br>
+        <button>Submit</button>
+    </form>
+</div>
+{% endblock %}

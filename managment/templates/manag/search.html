@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container srch">
+        <form method="POST" action="/search/">
+        {% csrf_token %}
+            <input type="text" name="srch" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+            <button>Search</button>
+        </form>
+    </div>
+    <div class="container">
+        {% for srh in sr.all %}
+            <a href="{% url 'loginuser' %}">
+                {{ srh.id }}&nbsp;&nbsp;
+                {{ srh.name }}&nbsp;&nbsp;
+                {{ srh.age }}&nbsp;&nbsp;
+                {{ srh.address }}&nbsp;&nbsp;
+                {{ srh.email }}&nbsp;&nbsp;
+                {{ srh.phone }}
+            </a> <br>
+        {% endfor %}
+        {% if messages %}
+            {% for k in messages %}
+                {{k}}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

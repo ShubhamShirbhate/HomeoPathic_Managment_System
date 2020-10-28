@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h3>Uptoo id :- {{ user }}</h3>
+    <div class="container">
+        <div class="sign-hdr">
+            <h1>SignIn</h1>
+        </div>     
+        <div class="sign">   
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <lable>Username </lable>&nbsp;&nbsp;
+                    
+                    <input type="text" name="username" maxlength="150"
+                     autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+                   
+                </div>
+                <br>
+                <div>
+                    <lable>Password </lable>&nbsp;&nbsp;
+                    <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+                </div>
+                <br>
+                <div>
+                    <lable>Confirm Password </lable>&nbsp;&nbsp;
+                    <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+                </div>
+                <br>
+                <br>
+                <div class="sign-btn">
+                    <button type="submit">Sign Up</button>
+                </div>
+                <div class="error">
+                    <h4>{{ error }}</h4>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

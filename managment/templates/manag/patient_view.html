@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container"> 
+    <div class="row P_hdr">
+        <div class="col-md-4">
+            <h3>patient view</h3> 
+        </div>
+        <div class="col-md-8 " style="padding-left:50%;">
+            {% for i in data %}
+            <p><svg width="2em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </svg></i>&nbsp;{{ i.name }}</p>
+          {% endfor %}
+          <a href="{% url 'history' %}">History</a>
+        </div>
+    </div>
+
+    <div>
+        <h4>Previous Treatments</h4>
+        {% for i in trt %}
+        <li>{{ i.created_at }} &nbsp {{ i.add_treat }}</li><br>
+        {% endfor %}
+    </div>
+    
+
+    <div class="txtbox"> 
+        <h4>Enter Treatment</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <textarea name="add_treat" cols="135" placeholder="Enter Treatment" rows="10" id="id_add_treat"></textarea>
+            <button>Add_Treatment</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
